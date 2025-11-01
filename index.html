@@ -28,7 +28,7 @@ for(let i=0;i<1000;i++){
   let w="";
   if(t===0){w=`${pick(adjectives)} ${pick(materials)} ${pick(animals)}`;}
   else if(t===1){w=`${pick(materials)} ${pick(foods)}${pick(objects)}`;}
-  else if(t===2){w=`${pick(adjectives)}${pick(animals)} ${pick(objects)}`;}
+  else if(t===2){w=`${pick(adjectives)} ${pick(animals)} ${pick(objects)}`;}
   else if(t===3){w=`${pick(foods)} ${pick(concepts)}`;}
   else if(t===4){w=`${pick(materials)} ${pick(concepts)}`;}
   else {w=[pick(adjectives),pick(materials),pick(animals),pick(objects),pick(misc)].sort(()=>Math.random()-0.5).slice(0,3+Math.floor(Math.random()*2)).join(" "); }
