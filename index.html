@@ -3,16 +3,15 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>ランダムAmazonカオス</title>
+<title>闇Amazon</title>
 <style>
   html,body{height:100%;margin:0;background:#000;color:#0f0;font-family:monospace;display:flex;align-items:center;justify-content:center;flex-direction:column}
-  h1{font-size:20px;margin:0}
+  h1{font-size:32px;margin:0}
   .small{font-size:12px;opacity:0.7;margin-top:6px}
 </style>
 </head>
 <body>
-  <h1>ランダムAmazon検索に接続中...</h1>
-  <div class="small">（ページを開くたびに違う検索へ飛びます）</div>
+  <h1>闇Amazon</h1>
 <script>
 const materials=["鉄","木","ステンレス","プラスチック","アルミ","銅","ガラス","紙","布","皮","石","竹","真鍮","セラミック","砂","骨","氷","炭"];
 const adjectives=["柔らかい","硬い","重い","軽い","小さい","大きい","ぬるい","冷たい","熱い","辛い","甘い","酸っぱい","苦い","光る","黒い","白い","錆びた","透ける","粘る","臭い","不思議な","古い","新しい","透明な"];
@@ -27,11 +26,11 @@ const combos=[];
 for(let i=0;i<1000;i++){
   const t=Math.floor(Math.random()*6);
   let w="";
-  if(t===0){w=`${pick(adjectives)} ${pick(materials)}の${pick(animals)}`;}
-  else if(t===1){w=`${pick(materials)}の${pick(foods)}${pick(objects)}`;}
-  else if(t===2){w=`${pick(adjectives)}${pick(animals)}の${pick(objects)}`;}
-  else if(t===3){w=`${pick(foods)}の${pick(concepts)}`;}
-  else if(t===4){w=`${pick(materials)}の${pick(concepts)}`;}
+  if(t===0){w=`${pick(adjectives)} ${pick(materials)} ${pick(animals)}`;}
+  else if(t===1){w=`${pick(materials)} ${pick(foods)}${pick(objects)}`;}
+  else if(t===2){w=`${pick(adjectives)}${pick(animals)} ${pick(objects)}`;}
+  else if(t===3){w=`${pick(foods)} ${pick(concepts)}`;}
+  else if(t===4){w=`${pick(materials)} ${pick(concepts)}`;}
   else {w=[pick(adjectives),pick(materials),pick(animals),pick(objects),pick(misc)].sort(()=>Math.random()-0.5).slice(0,3+Math.floor(Math.random()*2)).join(" "); }
   combos.push(w);
 }
