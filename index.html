@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ランダムAmazonカオス</title>
+<style>
+  html,body{height:100%;margin:0;background:#000;color:#0f0;font-family:monospace;display:flex;align-items:center;justify-content:center;flex-direction:column}
+  h1{font-size:20px;margin:0}
+  .small{font-size:12px;opacity:0.7;margin-top:6px}
+</style>
+</head>
+<body>
+  <h1>ランダムAmazon検索に接続中...</h1>
+  <div class="small">（ページを開くたびに違う検索へ飛びます）</div>
+<script>
+const materials=["鉄","木","ステンレス","プラスチック","アルミ","銅","ガラス","紙","布","皮","石","竹","真鍮","セラミック","砂","骨","氷","炭"];
+const adjectives=["柔らかい","硬い","重い","軽い","小さい","大きい","ぬるい","冷たい","熱い","辛い","甘い","酸っぱい","苦い","光る","黒い","白い","錆びた","透ける","粘る","臭い","不思議な","古い","新しい","透明な"];
+const animals=["犬","猫","鳥","カエル","タコ","カバ","象","狐","猿","ライオン","熊","ペンギン","リス","カメ","魚","カニ","クジラ","イルカ","ヘビ","ハト","パンダ","ハムスター","カラス","ラクダ","トカゲ"];
+const foods=["ラーメン","寿司","パン","ドーナツ","メロンパン","カレー","みかん","バナナ","チョコ","納豆","おでん","プリン","アイス","ケーキ","うどん","ピザ","ハンバーガー","焼き鳥","もつ鍋","たこ焼き"];
+const objects=["スマホ","時計","椅子","マグカップ","扇風機","テレビ","冷蔵庫","ノート","USB","トースター","スニーカー","キーボード","鉛筆","傘","カメラ","ぬいぐるみ","箸","鍋","スピーカー","歯ブラシ","トイレットペーパー","ハサミ","鏡","財布","ベルト"];
+const concepts=["孤独","愛","怒り","記憶","夢","哲学","宗教","真実","嘘","現実","未来","過去","時間","無意味","希望","後悔","自由","運命","誤解","退屈","興奮","感情"];
+const misc=["昭和","レトロ","ネット","AI","量子","都市伝説","祭り","路地裏","夜","光","影","骨","血","泡","砂","月","星","地球","宇宙","電波","重力","爆発","廃墟","秘密","雑音","ノイズ","ポエム","現代","未確認物体"];
+
+function pick(a){return a[Math.floor(Math.random()*a.length)];}
+const combos=[];
+for(let i=0;i<1000;i++){
+  const t=Math.floor(Math.random()*6);
+  let w="";
+  if(t===0){w=`${pick(adjectives)} ${pick(materials)}の${pick(animals)}`;}
+  else if(t===1){w=`${pick(materials)}の${pick(foods)}${pick(objects)}`;}
+  else if(t===2){w=`${pick(adjectives)}${pick(animals)}の${pick(objects)}`;}
+  else if(t===3){w=`${pick(foods)}の${pick(concepts)}`;}
+  else if(t===4){w=`${pick(materials)}の${pick(concepts)}`;}
+  else {w=[pick(adjectives),pick(materials),pick(animals),pick(objects),pick(misc)].sort(()=>Math.random()-0.5).slice(0,3+Math.floor(Math.random()*2)).join(" "); }
+  combos.push(w);
+}
+const keyword=encodeURIComponent(pick(combos));
+const url=`https://www.amazon.co.jp/s?k=${keyword}`;
+setTimeout(()=>location.href=url,1000);
+</script>
+</body>
+</html>
